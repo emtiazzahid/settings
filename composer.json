@@ -1,0 +1,40 @@
+{
+    "name": "kodeeo/settings",
+    "description": "Laravel Settings",
+    "type": "library, settings, laravel",
+    "keywords": ["setting", "laravel", "lumen"],
+    "homepage": "http://kodeeo.com",
+    "require": {
+        "hassankhan/config": "^0.10.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kodeeo",
+            "email": "info@kodeeo.com"
+        },
+        {
+            "name": "Shipu Ahamed",
+            "email": "shipu@kodeeo.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Kodeeo\\Settings\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Kodeeo\\Settings\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Kodeeo\\Settings\\Providers\\SettingsServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
