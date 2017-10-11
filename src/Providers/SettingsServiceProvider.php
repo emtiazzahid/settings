@@ -3,7 +3,12 @@
 namespace Kodeeo\Settings\Providers;
 
 
+use App;
 use Illuminate\Support\ServiceProvider;
+use Kodeeo\Settings\Contracts\SettingsContract;
+use Kodeeo\Settings\Models\SettingsEloquent;
+use Kodeeo\Settings\Services\SettingsService;
+use Kodeeo\Settings\Settings;
 
 class SettingsServiceProvider extends ServiceProvider
 {
@@ -14,9 +19,34 @@ class SettingsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->publishConfig();
+        $this->publishMigration();
+    }
 
-        $this->loadRoutesFrom(__DIR__.'/../Routes/web.php');
-        $this->loadMigrationsFrom(__DIR__.'/../Migrations');
+    /**
+     * Publish config file.
+     *
+     * @return void
+     */
+    public function publishConfig()
+    {
+        $configPath = realpath(__DIR__.'/../../config/kodeeo-settings.php');
+        $this->publishes([
+            $configPath => config_path('kodeeo-settings.php'),
+        ]);
+        $this->mergeConfigFrom($configPath, 'kodeeo-settings');
+    }
+
+    /**
+     * Publish migration file.
+     *
+     * @return void
+     */
+    public function publishMigration()
+    {
+        $this->publishes([
+            realpath(__DIR__.'/../Migrations/') => database_path('migrations'),
+        ], 'migrations');
     }
 
     /**
