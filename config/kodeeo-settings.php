@@ -4,19 +4,22 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Default Cache Store
+    | For Cache Enable or Disable
     |--------------------------------------------------------------------------
-    |
-    | This option controls the default cache connection that gets used while
-    | using this caching library. This connection is used when another is
-    | not explicitly specified when executing a given caching function.
-    |
-    | Supported: "apc", "array", "database", "file", "memcached", "redis"
+    | Supported: "true", "false"
     |
     */
 
     'cache' => true,
 
+    /*
+    |--------------------------------------------------------------------------
+    | Settings Key Column and Value Column
+    |--------------------------------------------------------------------------
+    | If you want to use custom column names in database store you could set
+    | them in this configuration
+    |
+    */
     'keyColumn' => 'key',
     'valueColumn' => 'value'
 ];
