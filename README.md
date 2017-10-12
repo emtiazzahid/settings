@@ -12,6 +12,12 @@ Kodeeo-Setting is a Laravel package so you can install it via Composer. Run this
 ```sh
 composer require kodeeo/settings
 ```
+Now run this command in your terminal to publish this package resources:
+
+```
+php artisan vendor:publish --provider="Kodeeo\Settings\Providers\SettingsServiceProvider"
+```
+
 
 ## Use Traits
 Use `GeTraits` traits in your model.
@@ -54,6 +60,10 @@ YourSettingModel::get('key'); // return collection or string or null
 Fallback Support:
 ```php
 YourSettingModel::get('key2.subkey2'); // return collection or string or null
+```
+You can also getting all setting value
+```php
+YourSettingModel::get(); // return collection
 ```
 
 ### has 
