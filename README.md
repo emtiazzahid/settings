@@ -17,11 +17,14 @@ Now run this command in your terminal to publish this package resources:
 ```
 php artisan vendor:publish --provider="Kodeeo\Settings\Providers\SettingsServiceProvider"
 ```
-
+If you run `vendor:publish` then you have add below code in your settings model 
+```php
+protected $table = 'kodeeo_settings'; // you can change your database table name.
+public $timestamps = false;
+``` 
 
 ## Use Traits
 Use `GeTraits` traits in your model.
-
 
 ## API List
 - [all](https://github.com/kodeeo/settings#all)
