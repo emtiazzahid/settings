@@ -29,7 +29,7 @@ Use `GeTraits` traits in your model.
 For getting all settings value paired by key you can use `all` method.
 
 ```php
-YourSettingModel::all();
+YourSettingModel::all(); // return collection
 ```
 
 ### set
@@ -76,5 +76,5 @@ YourSettingModel::forget('key'); // return integer 0 or 1
 ```
 Multiple key Forget:
 ```php
-YourSettingModel::forget(['key1', 'key2']); // return interger that means how many key successfully delete
+YourSettingModel::forget(['key1', 'key2']); // return interger - how many key successfully delete.
 ```
