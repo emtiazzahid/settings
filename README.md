@@ -18,17 +18,30 @@ Use `GeTraits` traits in your model.
 
 
 ## API List
+- [all](https://github.com/kodeeo/settings#all)
 - [set](https://github.com/kodeeo/settings#set)
 - [get](https://github.com/kodeeo/settings#get)
-- [forget](https://github.com/kodeeo/settings#current)
 - [has](https://github.com/kodeeo/settings#has)
+- [forget](https://github.com/kodeeo/settings#current)
+
+### all
+
+For getting all settings value paired by key you can use `all` method.
+
+```php
+YourSettingModel::all();
+```
 
 ### set
 
 For set value you can use `set` method.
 
 ```php
-YourSettingModel::set('key', 'value');
+YourSettingModel::set('key', 'value'); // return null
+```
+Multiple data store by key
+```php
+YourSettingModel::set(['key1' => 'value', 'key2' => ['subkey2' => 'value-of-subkey2'] ]); // return null
 ```
 
 ### get
@@ -36,7 +49,22 @@ YourSettingModel::set('key', 'value');
 For get value you can use `get` method.
 
 ```php
-YourSettingModel::get('key');
+YourSettingModel::get('key'); // return collection or string or null
+```
+Fallback Support:
+```php
+YourSettingModel::get('key2.subkey2'); // return collection or string or null
+```
+
+### has 
+For checking key exists or not you can use `has` method.
+
+```php
+YourSettingModel::has('key'); // return bool
+```
+Multiple key Forget:
+```php
+YourSettingModel::has(['key1', 'key2']); // return collection
 ```
 
 ### forget
@@ -44,9 +72,9 @@ YourSettingModel::get('key');
 For delete key you can use `forget` method.
 
 ```php
-YourSettingModel::forget('key');
+YourSettingModel::forget('key'); // return integer 0 or 1
 ```
-
-### has 
-
-coming soon...
+Multiple key Forget:
+```php
+YourSettingModel::forget(['key1', 'key2']); // return interger that means how many key successfully delete
+```
