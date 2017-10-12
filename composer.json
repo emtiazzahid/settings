@@ -1,8 +1,8 @@
 {
     "name": "kodeeo/settings",
-    "description": "Laravel Settings",
-    "type": "library, settings, laravel",
-    "keywords": ["setting", "laravel", "lumen"],
+    "description": "Kodeeo Settings is persistent settings in laravel",
+    "type": "package",
+    "keywords": ["settings", "laravel", "lumen"],
     "homepage": "http://kodeeo.com",
     "require": {
         "hassankhan/config": "^0.10.0"
