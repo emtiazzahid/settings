@@ -15,14 +15,14 @@ trait GetSettings
      *
      * @return \Illuminate\Support\Collection|null|string
      */
-    public function get( $keys = null, $default = null )
+    public static function get( $keys = null, $default = null )
     {
         if ( is_array($keys) ) {
             foreach ( $keys as $key ) {
-                $setting[ $key ] = $this->gettingExplodeValue($key, $default);
+                $setting[ $key ] = self::gettingExplodeValue($key, $default);
             }
         } else {
-            $setting = $this->gettingExplodeValue($keys, $default);
+            $setting = self::gettingExplodeValue($keys, $default);
         }
 
         if ( is_array($setting) ) {
@@ -40,9 +40,9 @@ trait GetSettings
      *
      * @return void
      */
-    public function set( $attributes, $value = null )
+    public static function set( $attributes, $value = null )
     {
-        $this->cacheForget();
+        self::cacheForget();
         if ( is_array($attributes) ) {
             foreach ( $attributes as $key => $attribute ) {
                 if ( is_array($attribute) ) {
@@ -68,10 +68,10 @@ trait GetSettings
      *
      * @return integer
      */
-    public function forget( $keys )
+    public static function forget( $keys )
     {
-        $this->cacheForget();
-        if(is_array($keys)) {
+        self::cacheForget();
+        if ( is_array($keys) ) {
             $setting = static::whereIn(config('kodeeo-settings.keyColumn'), $keys)->delete();
         } else {
             $setting = static::where(config('kodeeo-settings.keyColumn'), $keys)->delete();
@@ -87,15 +87,16 @@ trait GetSettings
      *
      * @return bool|\Illuminate\Support\Collection
      */
-    public function has( $keys )
+    public static function has( $keys )
     {
-        $settings = $this->get($keys);
+        $settings = self::get($keys);
 
-        if(is_array($keys)) {
+        if ( is_array($keys) ) {
             $hasSettings = [];
-            foreach ($keys as $key) {
-                $hasSettings[$key] = ( !is_null($settings[$key]) || is_array($settings[$key]) ) ? true : false;
+            foreach ( $keys as $key ) {
+                $hasSettings[ $key ] = ( !is_null($settings[ $key ]) || is_array($settings[ $key ]) ) ? true : false;
             }
+
             return collect($hasSettings);
         } else {
             if ( !is_null($settings) ) {
@@ -111,7 +112,7 @@ trait GetSettings
      *
      * @return \Illuminate\Support\Collection|string
      */
-    public function getAll()
+    public static function getAll()
     {
         $getAll = config('kodeeo-settings.cache') ? Cache::remember('kodeeo-settings', 15, function() {
             return static::all();
@@ -132,10 +133,10 @@ trait GetSettings
      *
      * @return \Illuminate\Support\Collection|mixed|null|string
      */
-    private function gettingExplodeValue( $keys = null, $default = null )
+    private static function gettingExplodeValue( $keys = null, $default = null )
     {
         $explode = explode('.', $keys);
-        $setting = $this->getAll();
+        $setting = self::getAll();
 
         if ( !isset($setting[ $explode[ 0 ] ]) ) {
             if ( !is_null($keys) ) {
@@ -165,7 +166,7 @@ trait GetSettings
      *
      * @return void
      */
-    private function cacheForget()
+    private static function cacheForget()
     {
         if ( config('kodeeo-settings.cache') ) {
             Cache::forget('kodeeo-settings');
