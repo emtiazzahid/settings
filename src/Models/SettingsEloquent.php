@@ -11,7 +11,7 @@ class SettingsEloquent extends Model
 
     protected $fillable = [ 'key', 'value' ];
 
-    protected $table = 'settings';
+    protected $table = 'kodeeo_settings';
 
     public $timestamps = false;
 
