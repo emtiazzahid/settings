@@ -4,9 +4,6 @@
     "type": "package",
     "keywords": ["settings", "laravel", "lumen"],
     "homepage": "http://kodeeo.com",
-    "require": {
-        "hassankhan/config": "^0.10.0"
-    },
     "require-dev": {
         "graham-campbell/testbench": "^3.3",
         "phpunit/phpunit": "^5.0"
