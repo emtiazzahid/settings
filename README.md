@@ -1,9 +1,5 @@
 # Kodeeo-Setting
-Persistent settings in Laravel
-
-### Features
-
-* Settings
+Persistent settings for Laravel.
 
 ## Installation
 
@@ -24,7 +20,7 @@ public $timestamps = false;
 ``` 
 
 ## Use Traits
-Use `GetSettings` traits in your model.
+Use `GetSettings` traits in your settings model.
 
 ## API List
 - [all](https://github.com/kodeeo/settings#all)
@@ -91,3 +87,16 @@ Multiple key Forget:
 ```php
 YourSettingModel::forget(['key1', 'key2']); // return interger - how many key successfully delete.
 ```
+
+## Helper
+Get / set the specified setting value. If an array is passed as the key, we will assume you want to set an array of values.
+
+```
+$value = settings('app.timezone');
+$value = settings('app.timezone', $default);
+```
+You may set settings variables by passing an array of key / value pairs:
+```
+settings(['app.debug' => true]);
+```
+
