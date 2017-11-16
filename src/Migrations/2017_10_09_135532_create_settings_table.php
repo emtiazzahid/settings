@@ -11,11 +11,24 @@ class CreateSettingsTable extends Migration
      *
      * @return void
      */
+
+    protected $table;
+    protected $keyColumn;
+    protected $valueColumn;
+
+
+    function __construct()
+    {
+        $this->table = config('kodeeo-settings.table') ? config('kodeeo-settings.table') : 'kodeoo_settings';
+        $this->keyColumn = config('kodeeo-settings.keyColumn') ? config('kodeeo-settings.keyColumn') : 'key';
+        $this->valueColumn = config('kodeeo-settings.valueColumn') ? config('kodeeo-settings.valueColumn') : 'value';
+    }
+    
     public function up()
     {
-        Schema::create('kodeeo_settings', function (Blueprint $table) {
-            $table->string('key')->index();
-            $table->text('value');
+        Schema::create($this->table, function (Blueprint $table) {
+            $table->string($this->keyColumn)->index();
+            $table->text($this->valueColumn);
         });
     }
 
@@ -26,6 +39,6 @@ class CreateSettingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kodeeo_settings');
+        Schema::dropIfExists($this->table);
     }
 }

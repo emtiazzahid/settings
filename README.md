@@ -3,22 +3,44 @@ Persistent settings for Laravel.
 
 ## Installation
 
-Kodeeo-Setting is a Laravel package so you can install it via Composer. Run this command in your terminal from your project directory:
+1. Kodeeo-Setting is a Laravel package so you can install it via Composer. Run this command in your terminal from your project directory:
 
-```sh
-composer require kodeeo/settings
-```
-Now run this command in your terminal to publish this package resources:
+    ```sh
+    composer require kodeeo/settings
+    ```
+    This will both update composer.json and install the package into the vendor/ directory.
 
-```
-php artisan vendor:publish --provider="Kodeeo\Settings\Providers\SettingsServiceProvider"
-```
-If you run `vendor:publish` then you have add below code in your settings model 
-```php
-protected $table = 'kodeeo_settings'; // you can change your database table name.
-public $timestamps = false;
-``` 
+2. Register the package
+    * Laravel 5.5 and up Uses package auto discovery feature, no need to edit the config/app.php file.
 
+    * Laravel 5.4 and below Register the package with laravel in config/app.php under providers with the following:
+    ```
+    'providers' => [
+            Kodeeo\Settings\Providers\SettingsServiceProvider::class,
+        ];
+    ```
+
+3. Now run this command in your terminal to publish this package resources:
+
+    ```
+    php artisan vendor:publish --provider="Kodeeo\Settings\Providers\SettingsServiceProvider"
+    ```
+4. If you run `vendor:publish` then you have add below code in your settings model 
+    ```php
+    protected $table = 'kodeeo_settings'; // you can change your database table name.
+    public $timestamps = false;
+    ``` 
+5. (Optional) Customize
+    * If you want to customize the table name and columns name you can change the values from config\kodeeo-settings.php file
+    * After that to reset the configuration values please run this command:
+    ```php
+        php artisan config:cache
+    ``` 
+6. Now run this command in your terminal to migrate the table in your database:
+    ```php
+         php artisan migrate
+    ``` 
+    
 ## Use Traits
 Use `GetSettings` traits in your settings model.
 

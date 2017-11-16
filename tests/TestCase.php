@@ -1,7 +1,7 @@
 <?php
 namespace Kodeeo\Settings\Tests;
 use GrahamCampbell\TestBench\AbstractPackageTestCase;
-use Shipu\Themevel\Providers\ThemevelServiceProvider;
+use Kodeeo\Settings\Providers\SettingsServiceProvider;
 /**
  * This is the abstract test case class.
  */
@@ -16,6 +16,6 @@ abstract class TestCase extends AbstractPackageTestCase
      */
     protected function getServiceProviderClass($app)
     {
-        return ThemevelServiceProvider::class;
+        return SettingsServiceProvider::class;
     }
 }

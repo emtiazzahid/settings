@@ -21,6 +21,16 @@ return [
     */
 
     'model' => Kodeeo\Settings\Models\SettingsEloquent::class,
+    
+    /*
+     * ------------------------------------------------------------------------
+     * Settings Table name
+     * ------------------------------------------------------------------------
+     * If you want to use custom table name in database you could set them 
+     * in this configuration
+     */
+    
+    'table' => 'kodeeo_settings',
 
     /*
     |--------------------------------------------------------------------------
