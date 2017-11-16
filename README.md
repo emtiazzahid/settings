@@ -31,14 +31,15 @@ Persistent settings for Laravel.
     public $timestamps = false;
     ``` 
 5. (Optional) Customize
-    * If you want to customize the table name and columns name you can change the values from config\kodeeo-settings.php file
+    * If you want to customize the table name and columns name you can change the values in 
+    config\kodeeo-settings.php file
     * After that to reset the configuration values please run this command:
     ```php
-        php artisan config:cache
+    php artisan config:cache
     ``` 
 6. Now run this command in your terminal to migrate the table in your database:
     ```php
-         php artisan migrate
+    php artisan migrate
     ``` 
     
 ## Use Traits
