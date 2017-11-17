@@ -25,19 +25,14 @@ Persistent settings for Laravel.
     ```
     php artisan vendor:publish --provider="Kodeeo\Settings\Providers\SettingsServiceProvider"
     ```
-4. If you run `vendor:publish` then you have add below code in your settings model 
-    ```php
-    protected $table = 'kodeeo_settings'; // you can change your database table name.
-    public $timestamps = false;
-    ``` 
-5. (Optional) Customize
+4. (Optional) Customize
     * If you want to customize the table name and columns name you can change the values in 
     config\kodeeo-settings.php file
     * After that to reset the configuration values please run this command:
     ```php
     php artisan config:cache
     ``` 
-6. Now run this command in your terminal to migrate the table in your database:
+5. Now run this command in your terminal to migrate the table in your database:
     ```php
     php artisan migrate
     ``` 
