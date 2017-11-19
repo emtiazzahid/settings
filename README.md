@@ -37,8 +37,31 @@ Persistent settings for Laravel.
     php artisan migrate
     ``` 
     
-## Use Traits
-Use `GetSettings` traits in your settings model.
+## Using Settings Model
+Use `SettingsEloquent` model in your controller.
+
+## Example
+   ```
+    <?php
+
+    namespace App\Http\Controllers;
+
+    use Illuminate\Http\Request;
+
+    use App\Http\Requests;
+    use Kodeeo\Settings\Models\SettingsEloquent;
+
+    class TestController extends Controller
+    {
+        public function test()
+        {
+            SettingsEloquent::set('email', 'test@mail.com');
+            $settings = SettingsEloquent::all();
+            dd($settings->toArray());
+        }
+    }
+
+    ```
 
 ## API List
 - [all](https://github.com/kodeeo/settings#all)
