@@ -41,7 +41,7 @@ Persistent settings for Laravel.
 Use `SettingsEloquent` model in your controller.
 
 ## Example
-   ```
+```
     <?php
 
     namespace App\Http\Controllers;
@@ -61,7 +61,7 @@ Use `SettingsEloquent` model in your controller.
         }
     }
 
-    ```
+```
 
 ## API List
 - [all](https://github.com/kodeeo/settings#all)
